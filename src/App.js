@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Message from './Components/Message';
 
 class App extends React.Component {
 
@@ -15,6 +16,7 @@ class App extends React.Component {
       isSubmitted: false
     }
 
+    // Binding des méthodes
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleRememberMeChange = this.handleRememberMeChange.bind(this)
@@ -47,7 +49,9 @@ class App extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    this.setState({isSubmitted: this.state.emailIsValid && this.state.passwordIsValid})
+    this.setState({
+      isSubmitted: this.state.emailIsValid && this.state.passwordIsValid
+    })
   }
 
   
@@ -57,9 +61,10 @@ class App extends React.Component {
 
     return (
       <>
-
       <h1 className="text-center p-3">Login</h1>
 
+      {this.state.isSubmitted ? <Message email={this.state.email} /> 
+      : (
       <form className="p-3"
       onSubmit={this.handleSubmit}
       >
@@ -69,6 +74,7 @@ class App extends React.Component {
           <label className="form-label">Email address</label>
           <input 
             type="email" 
+            email={this.state.email}
             className="form-control" 
             id="exampleInputEmail1" 
             aria-describedby="emailHelp"
@@ -107,6 +113,10 @@ class App extends React.Component {
         </button>
 
       </form>
+
+      )}
+
+      
 
       </>
     )
