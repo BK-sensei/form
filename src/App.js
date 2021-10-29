@@ -18,6 +18,7 @@ class App extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleRememberMeChange = this.handleRememberMeChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 
@@ -39,12 +40,14 @@ class App extends React.Component {
   }
 
   handleRememberMeChange (e) {
-    this.setState ({rememberMe: !this.state.rememberMe})
+    this.setState ({
+      rememberMe: !this.state.rememberMe
+    })
   }
 
   handleSubmit (e) {
     e.preventDefault()
-    this.setState({})
+    this.setState({isSubmitted: this.state.emailIsValid && this.state.passwordIsValid})
   }
 
   
@@ -57,7 +60,9 @@ class App extends React.Component {
 
       <h1 className="text-center p-3">Login</h1>
 
-      <form className="p-3">
+      <form className="p-3"
+      onSubmit={this.handleSubmit}
+      >
 
         {/* Email */}
         <div className="mb-3">
@@ -97,8 +102,7 @@ class App extends React.Component {
         {/* Bouton submit */}
         <button 
         type="submit" 
-        className="btn btn-primary"
-        onChange={this.handleSubmit}>
+        className="btn btn-primary">
           Submit
         </button>
 
