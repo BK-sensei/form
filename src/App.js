@@ -17,6 +17,7 @@ class App extends React.Component {
 
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
+    this.handleRememberMeChange = this.handleRememberMeChange.bind(this)
 
   }
 
@@ -37,8 +38,8 @@ class App extends React.Component {
     })
   }
 
-  handleRememberMeChange () {
-    this.setState ({rememberMe: this.state.rememberMe})
+  handleRememberMeChange (e) {
+    this.setState ({rememberMe: !this.state.rememberMe})
   }
 
   handleSubmit (e) {
@@ -87,6 +88,7 @@ class App extends React.Component {
             type="checkbox" 
             className="form-check-input" 
             id="exampleCheck1"
+            defaultChecked={this.state.rememberMe}
             onChange={this.handleRememberMeChange}
           />
           <label className="form-check-label">Remember me</label>
