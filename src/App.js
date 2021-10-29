@@ -13,7 +13,9 @@ class App extends React.Component {
       rememberMe: false,
       emailIsValid: false,
       passwordIsValid: false,
-      isSubmitted: false
+      isSubmitted: false,
+      firstName: "",
+      lastName:""
     }
 
     // Binding des méthodes
@@ -54,6 +56,14 @@ class App extends React.Component {
     })
   }
 
+  handleFirstNameChange (e){
+    this.setState({firstName: e.target.value})
+  }
+
+  handleLastNameChange (e){
+    this.setState({lastName: e.target.value})
+  }
+
   
   render () {
 
@@ -68,6 +78,17 @@ class App extends React.Component {
       <form className="p-3"
       onSubmit={this.handleSubmit}
       >
+        {/* Nom et Prénom */}
+        <div class="row mb-3">
+          <div class="col">
+          <label className="form-label">First name</label>
+            <input type="text" class="form-control" aria-label="First name"/>
+          </div>
+          <div class="col">
+          <label className="form-label">Last name</label>
+            <input type="text" class="form-control" aria-label="Last name"/>
+          </div>
+        </div>
 
         {/* Email */}
         <div className="mb-3">
